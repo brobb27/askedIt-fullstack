@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm'
+import { UserContext } from '../../context/UserProvider'
 
 export default function Auth() {
     // state handler for authform and create account/login
     const [userInput, setUserInput] = useState({username: '', password: ''})
     const [hasAccount, setHasAccount] =  useState(false)
+
+    // needed values from context
+    const { createAccount, login } = useContext(UserContext)
 
     // handle change for user input
     function handleChange(e) {
@@ -18,13 +22,13 @@ export default function Auth() {
     // create account funciton
     function handleCreateAccount(e) {
         e.preventDefault()
-        console.log('account created')
+        createAccount(userInput)
     }
 
     // log in function
     function handleLogin(e) {
         e.preventDefault()
-        console.log('logged in')
+        login(userInput)
     }
 
     // toggle has account
