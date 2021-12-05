@@ -1,10 +1,11 @@
 import React from 'react'
 import './App.css';
+import Auth from './components/auth/Auth';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Yeeet</h1>
+    <div className="webPage">
+      <Auth />
     </div>
   );
 }

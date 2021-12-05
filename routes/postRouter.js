@@ -29,7 +29,7 @@ postRouter.get('/onePost/:postId', (req, res, next) => {
 })
 
 // get posts by user id
-postRouter.get('/myposts', (req, res, next) => {
+postRouter.get('/myPosts', (req, res, next) => {
     Post.find({ user: req.user._id }, (err, userPosts) => {
         if(err) {
             res.status(500)
@@ -43,6 +43,7 @@ postRouter.get('/myposts', (req, res, next) => {
 // post request
 postRouter.post('/', (req, res, next) => {
     req.body.user = req.user._id
+    req.body.header = req.user.username
     const newPost = new Post(req.body)
     newPost.save((err, savedPost) => {
         if(err) {

@@ -1,0 +1,6 @@
+.toggleSignIn {
+	font-size: 0.85rem;
+	text-decoration: underline;
+	color: rgb(0, 110, 255);
+	cursor: pointer;
+}
