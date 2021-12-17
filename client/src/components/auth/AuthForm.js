@@ -23,7 +23,8 @@ export default function AuthForm({username, password, hasAccount, setHasAccount,
                 />
                 <button>{hasAccount ? 'Sign In' : 'Create Account'}</button>
             </form>
-            <p>{hasAccount ? `Dont have an account?` : `Already have an account?`} <span onClick={setHasAccount} className={'toggleSignIn'}>{hasAccount ? `Create Account` : `Sign in`}</span></p>
+            <p>{hasAccount ? `Dont have an account?` : `Already have an account?`}</p>
+            <p onClick={setHasAccount} className='toggleSignIn'>{hasAccount ? `Create Account` : `Sign in`}</p>
         </div>
     )
 }

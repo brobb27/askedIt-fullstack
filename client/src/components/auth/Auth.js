@@ -1,10 +1,14 @@
 import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm'
 import { UserContext } from '../../context/UserProvider'
+import { BsQuestionDiamondFill } from 'react-icons/bs'
 
 export default function Auth() {
+    // initial values for username and password
+    const initUser = {username: '', password: ''}
+
     // state handler for authform and create account/login
-    const [userInput, setUserInput] = useState({username: '', password: ''})
+    const [userInput, setUserInput] = useState(initUser)
     const [hasAccount, setHasAccount] =  useState(false)
 
     // needed values from context
@@ -36,12 +40,25 @@ export default function Auth() {
         setHasAccount(prevState => !prevState)
     }
 
+    // logo styles
+    const fullLogoIcon = {
+        color: "#1cf819",
+        height: '70%'
+    }
+
+    // header styles
+    const headerIcon = {
+        color: "#1cf819",
+        height: "4rem"
+    }
+
     return (
-        <div>
+        <div className={!hasAccount ? 'createAccountContainer' : 'signInContainer'}>
+            <h1><BsQuestionDiamondFill style={headerIcon} /></h1>
             {!hasAccount ?
             <>
-                <h2>Everyone has questions, lets learn from and enjoy eachothers experiences and opinions!</h2>
-                <h3>Join AskedIt today.</h3>
+                <h3>Everyone has questions, it's time you asked yours.</h3>
+                <h2>Join AskedIt<BsQuestionDiamondFill style= {fullLogoIcon}/> today!</h2>
                 <AuthForm 
                     username={userInput.username}
                     password={userInput.password}
@@ -52,7 +69,7 @@ export default function Auth() {
                 />
             </> :
             <>
-                <h2>Sign in to AskedIt</h2>
+            <h2>Sign in to AskedIt<BsQuestionDiamondFill style= {fullLogoIcon}/></h2>
                 <AuthForm 
                     username={userInput.username}
                     password={userInput.password}
