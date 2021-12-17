@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { UserContext } from '../../context/UserProvider'
 
 export default function Feed() {
+    // user info from context
+    const { user: {username} } = useContext(UserContext)
+
     // list of posts
     const [feed, setFeed] = useState([])
     const [filter, setFilter] = useState('allTime')
@@ -21,14 +25,15 @@ export default function Feed() {
     return (
         <div>
             <div>
-                <h1>Home</h1>
+                <h1>{username}</h1>
+                <h2>Home</h2>
                 <select>
                     <option value='recent'>Recent</option>
                     <option value='allTime'>All Time</option>
                 </select>
             </div>
             <div>
-                Posts go here
+                Feed goes here
             </div>
         </div>
     )
