@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import './App.css';
 import Auth from './components/auth/Auth';
-import Feed from './components/home/Feed';
+import Feed from './components/feed/Feed';
 import Navbar from './components/navbar/Navbar';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'

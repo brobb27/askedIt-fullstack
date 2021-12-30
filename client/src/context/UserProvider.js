@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { config } from 'dotenv'
 
 export const UserContext = React.createContext()
 
+// create axios interceptor so that the token will be sent with every request
 const userAxios = axios.create()
 
 userAxios.interceptors.request.use(config => {
@@ -65,7 +65,7 @@ export default function UserProvider({children}) {
         })
     }
 
-    // make post
+    // make a post
     function makePost(newPost) {
         userAxios.post('/api/post', newPost)
             .then(res => console.log(res))

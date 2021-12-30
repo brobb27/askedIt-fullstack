@@ -43,7 +43,6 @@ postRouter.get('/myPosts', (req, res, next) => {
 // post request
 postRouter.post('/', (req, res, next) => {
     req.body.user = req.user._id
-    req.body.header = req.user.username
     const newPost = new Post(req.body)
     newPost.save((err, savedPost) => {
         if(err) {
