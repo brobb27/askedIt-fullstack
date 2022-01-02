@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../../context/UserProvider'
+import './PostForm.css'
 
 export default function PostForm({toggleModal}) {
     // user context
@@ -33,15 +34,17 @@ export default function PostForm({toggleModal}) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input
+            <form onSubmit={handleSubmit} className='postForm'>
+                <textarea
+                    placeholder={`What's on your mind?`}
                     type='text'
                     name='body'
                     value={postInputs.body}
                     onChange={handleChange}
                     required
+                    className='postInput'
                 />
-                <button>Ask it</button>
+                <button className='postButton'>Ask it</button>
             </form>
         </div>
     )

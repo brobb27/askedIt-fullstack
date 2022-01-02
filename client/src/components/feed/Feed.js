@@ -39,7 +39,6 @@ export default function Feed() {
                 <h2>Home</h2>
                 <button onClick={toggleModal}>+ Ask Question</button>
                 <Modal open={isOpen} toggle={toggleModal}>
-                    <h3>What's the quesiton?</h3>
                     <PostForm 
                         toggleModal={toggleModal}
                     />

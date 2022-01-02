@@ -1,0 +1,25 @@
+/* all post form styles */
+
+.postForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.postInput {
+	resize: none;
+	height: 12rem;
+	width: 17rem;
+	border: none;
+}
+
+.postInput:focus {
+	outline: none;
+}
+
+.postButton {
+	height: 2rem;
+	width: 8rem;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
