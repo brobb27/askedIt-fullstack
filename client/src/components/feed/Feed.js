@@ -3,6 +3,16 @@ import axios from 'axios'
 import { UserContext } from '../../context/UserProvider'
 import Modal from '../modal/Modal'
 import PostForm from '../postForm/PostForm'
+import Post from '../post/Post'
+
+// create axios interceptor so that the token will be sent with every request
+const userAxios = axios.create()
+
+userAxios.interceptors.request.use(config => {
+    const token = localStorage.getItem('token')
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
 
 export default function Feed() {
     // user info from context
@@ -10,7 +20,9 @@ export default function Feed() {
 
     // state handlers for posts in feed
     const [feed, setFeed] = useState([])
-    const [filter, setFilter] = useState('allTime')
+    // const [filter, setFilter] = useState('allTime')
+
+    // FIGURE OUT QUERIES AND SORTS TO ALLOW THE USER TO SORT BY MOST RECENT OR MOST UPVOTES OF ALL TIME
 
     // state handler for modal
     const [isOpen, setIsOpen] = useState(false)
@@ -22,8 +34,10 @@ export default function Feed() {
     
     // get all posts
     function getAllPosts() {
-        axios.get(`/api/post/allTime`)
-            .then(res => console.log(res))
+        userAxios.get(`/api/post/allTime`)
+            .then(res => {
+                setFeed(res.data)
+            })
             .catch(err => console.log(err))
     }
     // get all posts on mount
@@ -31,6 +45,9 @@ export default function Feed() {
         getAllPosts()
         // eslint-disable-next-line
     }, [])
+
+    // post components
+    const postComponents = feed.map(post => <Post {...post} key={post._id} profile={false} />)
 
     return (
         <div>
@@ -49,7 +66,7 @@ export default function Feed() {
                 </select>
             </div>
             <div>
-                Feed goes here
+                {postComponents}
             </div>
         </div>
     )

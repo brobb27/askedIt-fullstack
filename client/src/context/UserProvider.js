@@ -45,6 +45,7 @@ export default function UserProvider({children}) {
             const {user, token} = res.data
             localStorage.setItem('token', token)
             localStorage.setItem('user', JSON.stringify(user))
+            getUserPosts()
             setUserState(prevState => ({
                 ...prevState,
                 user: user,
@@ -63,6 +64,19 @@ export default function UserProvider({children}) {
             token: '',
             userPosts: []
         })
+    }
+
+    // get user posts
+    function getUserPosts() {
+        userAxios.get('/api/post/myPosts')
+            .then(res => {
+                console.log(res)
+                setUserState(prevState => ({
+                    ...prevState,
+                    userPosts: res.data
+                }))
+            })
+            .catch(err => console.log(err.response.data.errMsg))
     }
 
     // make a post
@@ -84,7 +98,8 @@ export default function UserProvider({children}) {
             createAccount, 
             login, 
             logout,
-            makePost
+            makePost,
+            getUserPosts
         }}>
             { children }
         </UserContext.Provider>

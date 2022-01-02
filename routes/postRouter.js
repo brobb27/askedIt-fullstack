@@ -17,17 +17,6 @@ postRouter.get('/allTime', (req, res, next) => {
     })
 })
 
-// get by id
-postRouter.get('/onePost/:postId', (req, res, next) => {
-    Post.findOne({ _id: req.params.postId }, (err, postFound) => {
-        if(err) {
-            res.status(500)
-            return next(err)
-        }
-        return res.status(200).send(postFound)
-    })
-})
-
 // get posts by user id
 postRouter.get('/myPosts', (req, res, next) => {
     Post.find({ user: req.user._id }, (err, userPosts) => {
@@ -36,6 +25,17 @@ postRouter.get('/myPosts', (req, res, next) => {
             return next(err)
         }
         return res.status(200).send(userPosts)
+    })
+})
+
+// get by id
+postRouter.get('/onePost/:postId', (req, res, next) => {
+    Post.findOne({ _id: req.params.postId }, (err, postFound) => {
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(postFound)
     })
 })
 

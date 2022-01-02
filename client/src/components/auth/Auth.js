@@ -9,7 +9,7 @@ export default function Auth() {
 
     // state handler for authform and create account/login
     const [userInput, setUserInput] = useState(initUser)
-    const [hasAccount, setHasAccount] =  useState(false)
+    const [hasAccount, setHasAccount] =  useState(true)
 
     // needed values from context
     const { createAccount, login } = useContext(UserContext)
