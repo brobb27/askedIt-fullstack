@@ -17,7 +17,8 @@ export default function UserProvider({children}) {
     const initUserState = {
         user: JSON.parse(localStorage.getItem('user')) || {}, 
         token: localStorage.getItem('token') || '', 
-        userPosts: []
+        userPosts: [],
+        errMsg: ''
     }
     // state handler for user/token
     const [userState , setUserState] = useState(initUserState)
@@ -35,7 +36,7 @@ export default function UserProvider({children}) {
                     token: token
                 }))
             })
-            .catch(err => console.log(err.response.data.errMsg))
+            .catch(err => handleAuthError(err.response.data.errMsg))
     }
 
     // log in
@@ -52,7 +53,7 @@ export default function UserProvider({children}) {
                 token: token
             }))
         })
-        .catch(err => console.log(err.response.data.errMsg))
+        .catch(err => handleAuthError(err.response.data.errMsg))
     }
 
     // log out
@@ -92,6 +93,22 @@ export default function UserProvider({children}) {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    // handle any auth error
+    function handleAuthError(errMsg) {
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg
+        }))
+    }
+
+    // resets errMsg state
+    function resetAuthError() {
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg: ''
+        }))
+    }
+
     return (
         <UserContext.Provider value={{
             ...userState, 
@@ -99,7 +116,8 @@ export default function UserProvider({children}) {
             login, 
             logout,
             makePost,
-            getUserPosts
+            getUserPosts,
+            resetAuthError
         }}>
             { children }
         </UserContext.Provider>

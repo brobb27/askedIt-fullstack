@@ -1,7 +1,7 @@
 import React from 'react'
 import './Auth.css'
 
-export default function AuthForm({username, password, hasAccount, setHasAccount, handleSubmit, handleChange}) {
+export default function AuthForm({username, password, hasAccount, setHasAccount, handleSubmit, handleChange, err}) {
     return (
         <div className='authForm'>
             <form onSubmit={handleSubmit}>
@@ -21,6 +21,7 @@ export default function AuthForm({username, password, hasAccount, setHasAccount,
                     onChange={handleChange}
                     required
                 />
+                {err && <p className='errMsg'>{err}</p>}
                 <button>{hasAccount ? 'Sign In' : 'Create Account'}</button>
             </form>
             <p>{hasAccount ? `Dont have an account?` : `Already have an account?`}</p>

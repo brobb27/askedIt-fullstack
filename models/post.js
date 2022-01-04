@@ -20,6 +20,16 @@ const postSchema = new Schema({
         default: 0,
         required: true
     },
+    answerCount: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+    postComments: {
+        type: Array,
+        default: [],
+        required: true
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',

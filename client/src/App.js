@@ -4,6 +4,7 @@ import Auth from './components/auth/Auth';
 import Feed from './components/feed/Feed';
 import Navbar from './components/navbar/Navbar';
 import Profile from './components/profile/Profile';
+import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
 
@@ -13,20 +14,24 @@ function App() {
 
   return (
     <div className="webPage">
-      <Navbar logout={logout} />
+      {token && <Navbar logout={logout} /> }
       <Routes>
         <Route
           exact path='/'
           element={token ? <Navigate to='/feed'/> : <Auth />}
         />
-        <Route
-          path='/feed'
-          element={<Feed />}
-        />
-        <Route
-          path='/profile'
-          element={<Profile />}
-        />
+        <Route path='/feed' element={<ProtectedRoute token={token}/>}>
+          <Route 
+            path=''
+            element={<Feed />}
+          />
+        </Route>
+        <Route path='/Profile' element={<ProtectedRoute token={token}/>}>
+          <Route 
+            path=''
+            element={<Profile />}
+          />
+        </Route>
       </Routes>
     </div>
   );

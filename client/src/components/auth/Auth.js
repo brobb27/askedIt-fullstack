@@ -12,7 +12,7 @@ export default function Auth() {
     const [hasAccount, setHasAccount] =  useState(true)
 
     // needed values from context
-    const { createAccount, login } = useContext(UserContext)
+    const { createAccount, login, errMsg, resetAuthError } = useContext(UserContext)
 
     // handle change for user input
     function handleChange(e) {
@@ -38,6 +38,7 @@ export default function Auth() {
     // toggle has account
     function toggle() {
         setHasAccount(prevState => !prevState)
+        resetAuthError()
     }
 
     // logo styles
@@ -66,6 +67,7 @@ export default function Auth() {
                     handleSubmit={handleCreateAccount}
                     hasAccount={hasAccount}
                     setHasAccount={toggle}
+                    err= {errMsg}
                 />
             </> :
             <>
@@ -77,6 +79,7 @@ export default function Auth() {
                     handleSubmit={handleLogin}
                     hasAccount={hasAccount}
                     setHasAccount={toggle}
+                    err={errMsg}
                 />
             </>}
         </div>

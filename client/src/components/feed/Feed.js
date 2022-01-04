@@ -18,6 +18,11 @@ export default function Feed() {
     // user info from context
     const { user: {username} } = useContext(UserContext)
 
+    // sort feed by upvotes
+    function sortByUpVotes(postList) {
+        postList.sort((b, a) => a.upVotes - b.upVotes)
+    }
+
     // state handlers for posts in feed
     const [feed, setFeed] = useState([])
     // const [filter, setFilter] = useState('allTime')
@@ -36,8 +41,13 @@ export default function Feed() {
     function getAllPosts() {
         userAxios.get(`/api/post/allTime`)
             .then(res => {
-                setFeed(res.data)
+                const postList = res.data
+                sortByUpVotes(postList)
+                setFeed(postList)
             })
+            .then(
+                sortByUpVotes(feed)
+            )
             .catch(err => console.log(err))
     }
     // get all posts on mount

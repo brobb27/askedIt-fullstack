@@ -12,6 +12,11 @@
 	width: 20%;
 }
 
+.errMsg {
+	color: red;
+	font-size: 0.8rem;
+}
+
 /* create account styles */
 
 .createAccountContainer {

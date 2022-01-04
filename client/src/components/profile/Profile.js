@@ -27,7 +27,8 @@ function Profile() {
 
     return (
         <div>
-            <h2>{username}</h2>
+            <h1>{username}</h1>
+            <h2>My Questions</h2>
             <button onClick={toggleModal}>+ Ask Question</button>
             <Modal open={isOpen} toggle={toggleModal}>
                 <PostForm 
