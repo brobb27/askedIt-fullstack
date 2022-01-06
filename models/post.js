@@ -10,14 +10,13 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
+    // upVotes and downVotes are arrays that will add the user id
     upVotes: {
-        type: Number,
-        default: 0,
+        type: [Schema.Types.ObjectId],
         required: true
     },
     downVotes: {
-        type: Number,
-        default: 0,
+        type: [Schema.Types.ObjectId],
         required: true
     },
     answerCount: {

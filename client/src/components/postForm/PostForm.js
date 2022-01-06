@@ -8,7 +8,7 @@ export default function PostForm({toggleModal}) {
 
     // initial post value
     const initPost = {
-        header: `posted by ${username}`,
+        header: username,
         body: ''
     }
 

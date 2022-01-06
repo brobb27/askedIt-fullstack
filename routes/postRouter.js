@@ -7,7 +7,7 @@ const Post = require('../models/post')
 
 // GET requests
 // get all
-postRouter.get('/allTime', (req, res, next) => {
+postRouter.get('/all', (req, res, next) => {
     Post.find((err, posts) => {
         if(err) {
             res.status(500)

@@ -39,6 +39,7 @@ app.use('/auth', require('./routes/authRouter'))
 // requires a secret to access any routes that start with "api"
 app.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}))
 app.use('/api/post', require('./routes/postRouter'))
+app.use('/api/postVote', require('./routes/postVoteRouter'))
 
 // Error handler -- include global error handler in all applications
 app.use((err, req, res, next) => {

@@ -1,7 +1,102 @@
 /* all post styles */
 
 .postContainer {
-	padding: 1.5rem;
-	margin: 0rem 1.5rem;
-	outline: 0.03rem solid whitesmoke;
+	display: grid;
+	grid-template-columns: 1fr 15fr;
+	padding: 0.5rem;
+	margin: 0.5rem 1.5rem;
+	outline: 0.01rem solid whitesmoke;
+	border-radius: 0.5rem;
+}
+
+/* vote container styles */
+.votes {
+	grid-column: 1/1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.votes > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem 1rem 0.5rem 0rem;
+}
+
+.votes > div > p {
+	font-size: 0.9rem;
+	padding-bottom: 0.2rem;
+	font-weight: lighter;
+}
+
+.upVoteButton {
+	all: unset;
+	cursor: pointer;
+	padding-right: 0.3rem;
+	color: white;
+	font-size: 1.5rem;
+	transition: 0.4s;
+}
+
+.upVoteButton:hover {
+	color: #1cf819;
+}
+
+.downVoteButton {
+	all: unset;
+	cursor: pointer;
+	padding-right: 0.3rem;
+	color: white;
+	font-size: 1.5rem;
+	transition: 0.4s;
+}
+
+.downVoteButton:hover {
+	color: red;
+}
+
+/* main container styles */
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.header {
+	font-size: 0.8rem;
+	font-style: italic;
+	color: rgb(197, 197, 197);
+}
+
+.accountName {
+	font-size: 1rem;
+	font-style: normal;
+	color: white;
+}
+
+/* answer container styles */
+.answers {
+	grid-column: 2/3;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: rgb(197, 197, 197);
+}
+
+.answers > p {
+	padding-bottom: 0.2rem;
+	font-size: 0.8rem;
+}
+
+.commentButton {
+	all: unset;
+	cursor: pointer;
+	font-size: 1.2rem;
+	padding-right: 0.5rem;
+}
+
+.commentButton:hover {
+	color: white;
 }

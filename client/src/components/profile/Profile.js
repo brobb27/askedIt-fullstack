@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../context/UserProvider'
-import UserPostList from '../userPostList/UserPostList'
 import Modal from '../modal/Modal'
 import PostForm from '../postForm/PostForm'
+import Post from '../post/Post'
 
 function Profile() {
     // user context information
-    const { user: { username }, userPosts, getUserPosts } = useContext( UserContext )
+    const { user: { username, _id }, userPosts, getUserPosts } = useContext( UserContext )
 
     // gets user posts on page load
     useEffect(() => {
@@ -22,13 +22,13 @@ function Profile() {
         setIsOpen(prevState => !prevState)
     }
 
-    console.log(userPosts)
-
+    // user post components
+    const userPostComponents = userPosts.map(post => <Post {...post} userId={_id} profile={true} key={post._id}/>)
 
     return (
         <div>
             <h1>{username}</h1>
-            <h2>My Questions</h2>
+            <h2>Profile</h2>
             <button onClick={toggleModal}>+ Ask Question</button>
             <Modal open={isOpen} toggle={toggleModal}>
                 <PostForm 
@@ -37,7 +37,9 @@ function Profile() {
             </Modal>
             <div>
                 My questions
-                <UserPostList userPosts={userPosts} />
+                <div>
+                    {userPostComponents}
+                </div>
             </div>
         </div>
     )

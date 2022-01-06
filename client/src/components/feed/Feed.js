@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import './Feed.css'
 import axios from 'axios'
 import { UserContext } from '../../context/UserProvider'
 import Modal from '../modal/Modal'
@@ -16,7 +17,7 @@ userAxios.interceptors.request.use(config => {
 
 export default function Feed() {
     // user info from context
-    const { user: {username} } = useContext(UserContext)
+    const { user: {username, _id} } = useContext(UserContext)
 
     // sort feed by upvotes
     function sortByUpVotes(postList) {
@@ -39,8 +40,9 @@ export default function Feed() {
     
     // get all posts
     function getAllPosts() {
-        userAxios.get(`/api/post/allTime`)
+        userAxios.get(`/api/post/all`)
             .then(res => {
+                console.log(res.data)
                 const postList = res.data
                 sortByUpVotes(postList)
                 setFeed(postList)
@@ -57,7 +59,7 @@ export default function Feed() {
     }, [])
 
     // post components
-    const postComponents = feed.map(post => <Post {...post} key={post._id} profile={false} />)
+    const postComponents = feed.map(post => <Post {...post} userId={_id} profile={false} key={post._id} />)
 
     return (
         <div>
@@ -75,7 +77,7 @@ export default function Feed() {
                     <option value='allTime'>All Time</option>
                 </select>
             </div>
-            <div>
+            <div className='feed'>
                 {postComponents}
             </div>
         </div>
