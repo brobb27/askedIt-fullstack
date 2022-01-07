@@ -3,6 +3,7 @@ import './Post.css'
 import axios from 'axios'
 import { BsArrowUpCircle, BsArrowDownCircle } from 'react-icons/bs'
 import { FaRegComment } from 'react-icons/fa'
+import { MdClose } from 'react-icons/md'
 
 // create axios interceptor so that the token will be sent with every request
 const userAxios = axios.create()
@@ -20,13 +21,13 @@ function Post(props) {
     // state handlers for upVotes
     const [upVoteList, setUpVote] = useState(upVotes)
     const [downVoteList, setDownVote] = useState(downVotes)
-    const [isUpVoted, setUpVoted] = useState(false)
-    const [isDownVoted, setDownVoted] = useState(false)
+    const [isUpVoted, setIsUpVoted] = useState(false)
+    const [isDownVoted, setIsDownVoted] = useState(false)
 
     // set vote status
     useEffect(() => {
-        upVoteList.includes(userId) ? setUpVoted(true) : setUpVoted(false)
-        downVoteList.includes(userId) ? setDownVoted(true) : setDownVoted(false)
+        upVoteList.includes(userId) ? setIsUpVoted(true) : setIsUpVoted(false)
+        downVoteList.includes(userId) ? setIsDownVoted(true) : setIsDownVoted(false)
     }, [upVoteList, downVoteList, userId])
 
     // put request for upVotes
@@ -49,8 +50,15 @@ function Post(props) {
             .catch(err => console.log(err))
     }
 
-        // YOU ARE HERE
     // request to remove vote (set up route on post router) 
+    function handleRemoveVote() {
+        userAxios.put(`/api/postVote/remove/${_id}`)
+            .then(res => {
+                setUpVote(prevList => prevList.filter(voteId => voteId !== userId))
+                setDownVote(prevList => prevList.filter(voteId => voteId !== userId))
+            })
+            .catch(err => console.log(err))
+    }
 
     // convert createdAt to readable date
     const date = new Date(createdAt).toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric'})
@@ -82,9 +90,11 @@ function Post(props) {
             <div className='main'>
                 <p className='header'>posted by <span className='accountName'>{profile ? 'you' : header}</span> on {date}</p>
                 <p>{body}</p>
-                <div className='answers'>
+                <div className='postFooter'>
                     <button className='commentButton'><FaRegComment /></button>
                     <p>{answerCount} answers</p>
+                    <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>
+                    <p>remove my vote</p>
                 </div>
             </div>
         </div>

@@ -40,4 +40,20 @@ postVoteRouter.put('/down/:postId', (req, res, next) => {
     )
 })
 
+// put request to remove vote from post
+postVoteRouter.put('/remove/:postId', (req, res, next) => {
+    Post.findByIdAndUpdate(
+        { _id: req.params.postId},
+        { $pull: { upVotes: req.user._id, downVotes: req.user._id}},
+        { new: true },
+        (err, removedPost) => {
+            if(err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(201).send(removedPost)
+        }
+    )
+})
+
 module.exports = postVoteRouter
