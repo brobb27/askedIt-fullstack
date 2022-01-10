@@ -6,10 +6,12 @@
 	place-items: center;
 	top: 20%;
 	left: 28%;
-	padding: 1rem 0.2rem 0.2rem 1rem;
-	background-color: #ffffff;
+	padding: 0.5rem 1rem 1rem;
 	z-index: 1000;
 	border-radius: 0.5rem;
+	background-color: black;
+	color: white;
+	outline: #1cf819 0.1rem solid;
 }
 
 .overlay {
@@ -18,14 +20,12 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0, 0, 0, 0.4);
 	z-index: 1000;
 }
 
 .cancelButton {
 	cursor: pointer;
 	margin-left: 12rem;
-	margin-top: 1rem;
 	height: 1.5rem;
-	width: 5rem;
 }

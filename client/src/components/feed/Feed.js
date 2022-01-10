@@ -21,17 +21,17 @@ export default function Feed() {
 
     // sort feed by upvotes
     function sortByUpVotes(postList) {
-        postList.sort((b, a) => a.upVotes - b.upVotes)
+        postList.sort((b, a) => a.upVotes.length - b.upVotes.length)
     }
 
     // state handlers for posts in feed
     const [feed, setFeed] = useState([])
+    // state handler for filter
     // const [filter, setFilter] = useState('allTime')
-
-    // FIGURE OUT QUERIES AND SORTS TO ALLOW THE USER TO SORT BY MOST RECENT OR MOST UPVOTES OF ALL TIME
-
     // state handler for modal
     const [isOpen, setIsOpen] = useState(false)
+
+    // FIGURE OUT QUERIES AND SORTS TO ALLOW THE USER TO SORT BY MOST RECENT OR MOST UPVOTES OF ALL TIME
 
     // toggle isOpen
     function toggleModal() {
@@ -47,9 +47,6 @@ export default function Feed() {
                 sortByUpVotes(postList)
                 setFeed(postList)
             })
-            .then(
-                sortByUpVotes(feed)
-            )
             .catch(err => console.log(err))
     }
     // get all posts on mount
@@ -58,8 +55,16 @@ export default function Feed() {
         // eslint-disable-next-line
     }, [])
 
-    // post components
-    const postComponents = feed.map(post => <Post {...post} userId={_id} profile={false} key={post._id} />)
+    // post components 
+    // (SHOULD PROBABLY PASS DOWN SORT FUNCTION TO SORT AFTER UPVOTES/DOWNVOTES)
+    const postComponents = feed.map(post => 
+        <Post 
+            {...post} 
+            userId={_id} 
+            profile={false}
+            key={post._id} 
+        />
+    )
 
     return (
         <div>
@@ -70,6 +75,7 @@ export default function Feed() {
                 <Modal open={isOpen} toggle={toggleModal}>
                     <PostForm 
                         toggleModal={toggleModal}
+                        getNewPost={getAllPosts}
                     />
                 </Modal>
                 <select>

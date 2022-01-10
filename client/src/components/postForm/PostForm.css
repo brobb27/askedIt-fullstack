@@ -10,6 +10,8 @@
 	height: 12rem;
 	width: 17rem;
 	border: none;
+	background-color: black;
+	color: white;
 }
 
 .postInput:focus {

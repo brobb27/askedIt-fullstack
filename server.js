@@ -40,6 +40,8 @@ app.use('/auth', require('./routes/authRouter'))
 app.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}))
 app.use('/api/post', require('./routes/postRouter'))
 app.use('/api/postVote', require('./routes/postVoteRouter'))
+app.use('/api/commment', require('./routes/commentRouter'))
+
 
 // Error handler -- include global error handler in all applications
 app.use((err, req, res, next) => {

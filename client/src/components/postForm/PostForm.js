@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { UserContext } from '../../context/UserProvider'
 import './PostForm.css'
 
-export default function PostForm({toggleModal}) {
+export default function PostForm({toggleModal, getNewPost}) {
     // user context
     const { user: {username}, makePost } = useContext(UserContext)
 
@@ -30,13 +30,14 @@ export default function PostForm({toggleModal}) {
         makePost(postInputs)
         setPostInputs(initPost)
         toggleModal()
+        getNewPost()
     }
 
     return (
-        <div>
+        <div className='postFormContainer'>
             <form onSubmit={handleSubmit} className='postForm'>
                 <textarea
-                    placeholder={`What's on your mind?`}
+                    placeholder={`What's your question?`}
                     type='text'
                     name='body'
                     value={postInputs.body}

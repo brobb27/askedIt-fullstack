@@ -16,7 +16,17 @@ userAxios.interceptors.request.use(config => {
 
 function Post(props) {
     // destructuring props
-    const {header, createdAt, body, upVotes, downVotes, profile, answerCount, _id, userId} = props
+    const {
+        header, 
+        createdAt, 
+        body, 
+        upVotes, 
+        downVotes, 
+        profile, 
+        postAnswers, 
+        _id, 
+        userId,
+    } = props
 
     // state handlers for upVotes
     const [upVoteList, setUpVote] = useState(upVotes)
@@ -92,7 +102,7 @@ function Post(props) {
                 <p>{body}</p>
                 <div className='postFooter'>
                     <button className='commentButton'><FaRegComment /></button>
-                    <p>{answerCount} answers</p>
+                    <p>{postAnswers.length} answers</p>
                     <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>
                     <p>remove my vote</p>
                 </div>

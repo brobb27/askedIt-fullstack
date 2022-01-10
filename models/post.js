@@ -13,18 +13,15 @@ const postSchema = new Schema({
     // upVotes and downVotes are arrays that will add the user id
     upVotes: {
         type: [Schema.Types.ObjectId],
+        ref: 'User',
         required: true
     },
     downVotes: {
         type: [Schema.Types.ObjectId],
+        ref: 'User',
         required: true
     },
-    answerCount: {
-        type: Number,
-        default: 0,
-        required: true
-    },
-    postComments: {
+    postAnswers: {
         type: Array,
         default: [],
         required: true

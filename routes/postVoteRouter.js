@@ -1,3 +1,4 @@
+// import dependencies
 const express = require("express")
 const postVoteRouter = express.Router()
 const Post = require('../models/post')

@@ -10,8 +10,8 @@ export default function Modal({children, open, toggle}) {
         <>
             <div className='overlay' />
             <div className='modalContainer'>
+                <button onClick={() => toggle()} className='cancelButton'>X</button>
                 {children}
-                <button onClick={() => toggle()} className='cancelButton'>Cancel</button>
             </div>
         </>,
         document.getElementById('portal')
