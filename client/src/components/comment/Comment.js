@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import './Post.css'
 import axios from 'axios'
 import { BsArrowUpCircle, BsArrowDownCircle } from 'react-icons/bs'
-import { FaRegComment } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
 
 // create axios interceptor so that the token will be sent with every request
@@ -14,16 +12,14 @@ userAxios.interceptors.request.use(config => {
     return config
 })
 
-function Post(props) {
+function Comment(props) {
     // destructuring props
     const {
-        header, 
+        header,
+        answer, 
         createdAt, 
-        body, 
         upVotes, 
         downVotes, 
-        profile, 
-        postAnswers, 
         _id, 
         userId,
     } = props
@@ -42,7 +38,7 @@ function Post(props) {
 
     // put request for upVotes
     function handleUpVote() {
-        userAxios.put(`/api/postVote/up/${_id}`)
+        userAxios.put(`/api/commentVote/upVote/${_id}`)
             .then(res => {
                 setUpVote(prevList => prevList.includes(userId) ? prevList : [...prevList, userId])
                 setDownVote(prevList => prevList.filter(voteId => voteId !== userId))
@@ -52,7 +48,7 @@ function Post(props) {
 
     // put request for downVotes
     function handleDownVote() {
-        userAxios.put(`/api/postVote/down/${_id}`)
+        userAxios.put(`/api/commentVote/downVote/${_id}`)
             .then(res => {
                 setDownVote(prevList => prevList.includes(userId) ? prevList : [...prevList, userId])
                 setUpVote(prevList => prevList.filter(voteId => voteId !== userId))
@@ -62,7 +58,7 @@ function Post(props) {
 
     // request to remove vote (set up route on post router) 
     function handleRemoveVote() {
-        userAxios.put(`/api/postVote/remove/${_id}`)
+        userAxios.put(`/api/commentVote/remove/${_id}`)
             .then(res => {
                 setUpVote(prevList => prevList.filter(voteId => voteId !== userId))
                 setDownVote(prevList => prevList.filter(voteId => voteId !== userId))
@@ -98,11 +94,9 @@ function Post(props) {
                 </div>
             </div>
             <div className='main'>
-                <p className='header'>posted by <span className='accountName'>{profile ? 'you' : header}</span> on {date}</p>
-                <p>{body}</p>
+                <p className='header'>reply by <span className='accountName'>{header}</span> on {date}</p>
+                <p>{answer}</p>
                 <div className='postFooter'>
-                    <button className='commentButton'><FaRegComment /></button>
-                    <p>{postAnswers.length} answers</p>
                     <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>
                     <p>remove my vote</p>
                 </div>
@@ -111,4 +105,4 @@ function Post(props) {
     )
 }
 
-export default Post
+export default Comment

@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../context/UserProvider'
 import Modal from '../modal/Modal'
 import PostForm from '../postForm/PostForm'
-import Post from '../post/Post'
+import Post from '../feedPost/FeedPost'
 
 function Profile() {
     // user context information
@@ -33,6 +33,7 @@ function Profile() {
             <Modal open={isOpen} toggle={toggleModal}>
                 <PostForm 
                     toggleModal={toggleModal}
+                    getNewPost={getUserPosts}
                 />
             </Modal>
             <div>

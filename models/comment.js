@@ -6,16 +6,18 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
-    comment: {
+    answer: {
         type: String,
         required: true
     },
-    upVote: {
+    upVotes: {
         type: [Schema.Types.ObjectId],
+        ref: 'User',
         required: true
     },
-    downVote: {
+    downVotes: {
         type: [Schema.Types.ObjectId],
+        ref: 'User',
         required: true
     },
     post: {

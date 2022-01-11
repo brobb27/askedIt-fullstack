@@ -1,0 +1,22 @@
+/* all single post component styles */
+
+.singlePostContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	outline: 0.005rem rgb(211, 211, 211) solid;
+}
+
+.singlePostContainer > div {
+	padding: 0.5rem 0rem;
+}
+
+.singlePostFooter {
+	display: flex;
+	color: rgb(211, 211, 211);
+}
+
+.singlePostFooter > div {
+	display: flex;
+	padding-right: 1rem;
+}

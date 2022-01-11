@@ -71,7 +71,6 @@ export default function UserProvider({children}) {
     function getUserPosts() {
         userAxios.get('/api/post/myPosts')
             .then(res => {
-                console.log(res)
                 setUserState(prevState => ({
                     ...prevState,
                     userPosts: res.data

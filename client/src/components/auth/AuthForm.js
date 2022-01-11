@@ -14,7 +14,7 @@ export default function AuthForm({username, password, hasAccount, setHasAccount,
                     required
                 />
                 <input 
-                    type='text'
+                    type='password'
                     name='password'
                     placeholder='Password'
                     value={password}

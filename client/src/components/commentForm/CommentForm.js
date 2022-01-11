@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../../context/UserProvider'
 
-function CommentForm() {
+function CommentForm({ makeComment, refreshComments }) {
     // context info needed
     const { user: {username } } = useContext(UserContext)
 
@@ -14,7 +14,7 @@ function CommentForm() {
     // state handler for comment
     const [comment, setComment] = useState(initComment)
 
-    //handle change function
+    // handle change function
     function handleChange(e) {
         const {name, value} = e.target
         setComment(prevComment => ({
@@ -23,9 +23,17 @@ function CommentForm() {
         }))
     }
 
+    // handleSubmit of the comment form
+    function handleSubmit(e) {
+        e.preventDefault()
+        makeComment(comment)
+        setComment(initComment)
+        refreshComments()
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <textarea
                     placeholder='Enter your answer here'
                     type='text'

@@ -4,7 +4,7 @@ import axios from 'axios'
 import { UserContext } from '../../context/UserProvider'
 import Modal from '../modal/Modal'
 import PostForm from '../postForm/PostForm'
-import Post from '../post/Post'
+import FeedPost from '../feedPost/FeedPost'
 
 // create axios interceptor so that the token will be sent with every request
 const userAxios = axios.create()
@@ -42,7 +42,6 @@ export default function Feed() {
     function getAllPosts() {
         userAxios.get(`/api/post/all`)
             .then(res => {
-                console.log(res.data)
                 const postList = res.data
                 sortByUpVotes(postList)
                 setFeed(postList)
@@ -55,10 +54,9 @@ export default function Feed() {
         // eslint-disable-next-line
     }, [])
 
-    // post components 
-    // (SHOULD PROBABLY PASS DOWN SORT FUNCTION TO SORT AFTER UPVOTES/DOWNVOTES)
+    // post components
     const postComponents = feed.map(post => 
-        <Post 
+        <FeedPost 
             {...post} 
             userId={_id} 
             profile={false}

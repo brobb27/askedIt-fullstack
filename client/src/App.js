@@ -4,6 +4,7 @@ import Auth from './components/auth/Auth';
 import Feed from './components/feed/Feed';
 import Navbar from './components/navbar/Navbar';
 import Profile from './components/profile/Profile';
+import PostPage from './components/postPage/PostPage';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
@@ -26,10 +27,16 @@ function App() {
             element={<Feed />}
           />
         </Route>
-        <Route path='/Profile' element={<ProtectedRoute token={token}/>}>
+        <Route path='/profile' element={<ProtectedRoute token={token}/>}>
           <Route 
             path=''
             element={<Profile />}
+          />
+        </Route>
+        <Route path='/post/:postId' element={<ProtectedRoute token={token} />}>
+          <Route
+            path=''
+            element={<PostPage />}
           />
         </Route>
       </Routes>
