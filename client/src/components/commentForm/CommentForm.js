@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import './CommentForm.css'
 import { UserContext } from '../../context/UserProvider'
 
 function CommentForm({ makeComment, refreshComments }) {
@@ -32,7 +33,7 @@ function CommentForm({ makeComment, refreshComments }) {
     }
 
     return (
-        <div>
+        <div className='commentForm'>
             <form onSubmit={handleSubmit}>
                 <textarea
                     placeholder='Enter your answer here'

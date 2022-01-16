@@ -14,7 +14,7 @@ function App() {
   const { token, logout } = useContext(UserContext)
 
   return (
-    <div className="webPage">
+    <div className={token ? 'loggedIn' : 'webPage'}>
       {token && <Navbar logout={logout} /> }
       <Routes>
         <Route

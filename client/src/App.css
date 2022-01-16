@@ -12,3 +12,8 @@ body {
 }
 
 /* #1cf819 */
+
+.loggedIn {
+	display: grid;
+	grid-template-columns: 2fr 6fr 2fr;
+}

@@ -65,7 +65,7 @@ export default function Feed() {
     )
 
     return (
-        <div>
+        <div className='feedContainer'>
             <div>
                 <h1>{username}</h1>
                 <h2>Home</h2>

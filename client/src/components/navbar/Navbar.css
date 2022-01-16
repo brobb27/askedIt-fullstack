@@ -1,6 +1,24 @@
 /* all navbar styles */
 
+.navContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding-right: 1rem;
+	padding-top: 1rem;
+	border-right: 0.005rem rgb(211, 211, 211) solid;
+}
+
 .link {
-    color: whitesmoke;
-    padding: .5rem;
+	color: whitesmoke;
+	padding: 0.5rem 0.6rem 0.3rem;
+	margin: 0.2rem 0rem 0.2rem 0.2rem;
+	font-size: 1.8rem;
+	cursor: pointer;
+	border-radius: 5rem;
+	transition: 0.3s ease-in-out;
+}
+
+.link:hover {
+	background-color: rgba(211, 211, 211, 0.288);
 }

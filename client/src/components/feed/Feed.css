@@ -1,5 +1,9 @@
 /* all feed page styles */
 
+.feedContainer {
+	border-right: 0.005rem rgb(211, 211, 211) solid;
+}
+
 .feed {
 	margin-top: 1rem;
 }

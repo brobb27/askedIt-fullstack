@@ -95,7 +95,7 @@ function PostPage() {
     )
 
     return (
-        <div>
+        <div className='postPageContainer'>
             <Link to='/feed'>Back</Link>
             <h2>Question</h2>
             { isLoading ?

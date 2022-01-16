@@ -4,9 +4,7 @@
 	display: grid;
 	grid-template-columns: 1fr 15fr;
 	padding: 0.5rem;
-	margin: 0rem 1.5rem;
 	border-top: 0.005rem solid rgb(211, 211, 211);
-	border-left: 0.005rem solid rgb(211, 211, 211);
 }
 
 /* vote container styles */
