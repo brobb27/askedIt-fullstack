@@ -74,10 +74,10 @@ function SinglePost(props) {
     return (
         <div className='singlePostContainer'>
             <div>
-                <p className='header'>posted by <span className='accountName'>{profile ? 'you' : header}</span> on {date}</p>
+                <p className='postHeader'>posted by <span className='accountName'>{profile ? 'you' : header}</span> on {date}</p>
             </div>
             <div>
-                <p>{body}</p>
+                <p className='postBody'>{body}</p>
             </div>
             <div className='singlePostFooter'>
                 <div>

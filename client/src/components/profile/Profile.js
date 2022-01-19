@@ -7,7 +7,7 @@ import Post from '../feedPost/FeedPost'
 
 function Profile() {
     // user context information
-    const { user: { username, _id }, userPosts, getUserPosts } = useContext( UserContext )
+    const { user: { _id }, userPosts, getUserPosts } = useContext( UserContext )
 
     // gets user posts on page load
     useEffect(() => {
@@ -28,17 +28,18 @@ function Profile() {
 
     return (
         <div className='profileContainer'>
-            <h1>{username}</h1>
-            <h2>Profile</h2>
-            <button onClick={toggleModal}>+ Ask Question</button>
-            <Modal open={isOpen} toggle={toggleModal}>
-                <PostForm 
-                    toggleModal={toggleModal}
-                    getNewPost={getUserPosts}
-                />
-            </Modal>
+            <div className='profileHeader'>
+                <h2>Profile</h2>
+                <button onClick={toggleModal} className='askButton'>+ Ask It</button>
+                <Modal open={isOpen} toggle={toggleModal}>
+                    <PostForm 
+                        toggleModal={toggleModal}
+                        getNewPost={getUserPosts}
+                    />
+                </Modal>
+            </div>
             <div>
-                My questions
+                <h3 className='profileTitle'>My questions</h3>
                 <div>
                     {userPostComponents}
                 </div>

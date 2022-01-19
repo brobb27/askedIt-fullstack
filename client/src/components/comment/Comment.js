@@ -93,8 +93,8 @@ function Comment(props) {
                     <p>{downVoteList.length}</p>
                 </div>
             </div>
-            <div className='main'>
-                <p className='header'>reply by <span className='accountName'>{header}</span> on {date}</p>
+            <div className='postMain'>
+                <p className='postHeader'>reply by <span className='accountName'>{header}</span> on {date}</p>
                 <p>{answer}</p>
                 <div className='postFooter'>
                     <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>

@@ -37,3 +37,8 @@
 	border-radius: 0.5rem;
 	transition: 0.5s;
 }
+
+.postButton:hover {
+	background-color: #1cf819;
+	color: #101611;
+}

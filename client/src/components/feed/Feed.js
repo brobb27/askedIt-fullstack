@@ -24,14 +24,39 @@ export default function Feed() {
         postList.sort((b, a) => a.upVotes.length - b.upVotes.length)
     }
 
+    // sort feed by most recent
+    function toDate(date) {
+        const correctFormat = new Date(date).toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric'}).split('/').reverse().join('')
+        return correctFormat
+    }
+    function sortByDate(postList) {
+        postList.sort((b, a) => toDate(a.createdAt) - toDate(b.createdAt))
+    }
+
     // state handlers for posts in feed
     const [feed, setFeed] = useState([])
-    // state handler for filter
-    // const [filter, setFilter] = useState('allTime')
+    //state for loading sort
+    const [isSorting, setIsSorting] = useState(false)
     // state handler for modal
     const [isOpen, setIsOpen] = useState(false)
 
-    // FIGURE OUT QUERIES AND SORTS TO ALLOW THE USER TO SORT BY MOST RECENT OR MOST UPVOTES OF ALL TIME
+    // filters the feed... is there a better way? maybe async await?
+    function handleFilter(e) {
+        setIsSorting(true)
+        const { value } = e.target
+        if (value === 'recent') {
+            userAxios.get('/api/post/all')
+                .then(res => {
+                    const postList = res.data
+                    sortByDate(postList)
+                    setFeed(postList)
+                })
+                .catch(err => console.log(err))
+        } else {
+            getAllPosts()
+        }
+        setIsSorting(false)
+    }
 
     // toggle isOpen
     function toggleModal() {
@@ -68,21 +93,27 @@ export default function Feed() {
         <div className='feedContainer'>
             <div className='feedNavbar'>
                 <h2>Home</h2>
-                <button onClick={toggleModal} className='askButton'>+ Ask Question</button>
+                <button onClick={toggleModal} className='askButton'>+ Ask It</button>
                 <Modal open={isOpen} toggle={toggleModal}>
                     <PostForm 
                         toggleModal={toggleModal}
                         getNewPost={getAllPosts}
                     />
                 </Modal>
-                <select className='sortButton'>
+                <select className='sortButton' onChange={handleFilter}>
+                    <option value='votes'>Up Votes</option>
                     <option value='recent'>Recent</option>
-                    <option value='allTime'>All Time</option>
                 </select>
             </div>
+            {isSorting ? 
+            <div>
+                <h2>Sorting</h2>
+            </div>
+            :
             <div className='feed'>
                 {postComponents}
             </div>
+            }
         </div>
     )
 }

@@ -44,7 +44,7 @@ function CommentForm({ makeComment, refreshComments }) {
                     className='commentInput'
                     required
                 />
-                <button className='answerButton'>answer</button>
+                <button className='answerButton'>Answer</button>
             </form>
         </div>
     )

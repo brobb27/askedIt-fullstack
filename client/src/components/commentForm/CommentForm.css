@@ -8,7 +8,7 @@
 .commentInput {
 	width: 100%;
 	font-size: 1.1rem;
-	background-color: #1f212c;
+	background-color: #101611;
 	color: white;
 	resize: none;
 	padding: 1rem 4.5rem 0rem 1rem;
@@ -34,7 +34,21 @@
 }
 
 .answerButton {
+	all: unset;
+	cursor: pointer;
 	position: relative;
 	bottom: 2rem;
-	left: 84%;
+	left: 82%;
+	font-size: 0.9rem;
+	background-color: #101611;
+	border: 0.02rem solid #1cf819;
+	padding: 0.4rem 0.7rem;
+	color: #1cf819;
+	border-radius: 0.5rem;
+	transition: 0.5s ease-in-out;
+}
+
+.answerButton:hover {
+	background-color: #1cf819;
+	color: #101611;
 }

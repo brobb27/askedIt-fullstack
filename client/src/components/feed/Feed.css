@@ -1,6 +1,8 @@
 /* all feed page styles */
 
 .feedContainer {
+	grid-area: main;
+	overflow: auto;
 	height: 100%;
 	border-right: 0.005rem rgb(100, 100, 100) solid;
 	width: inherit;
@@ -32,7 +34,7 @@
 	padding: 0.2rem 0.5rem;
 	color: #1cf819;
 	border-radius: 0.5rem;
-	transition: 0.5s;
+	transition: 0.4s ease-in-out;
 }
 
 .askButton:hover {

@@ -97,9 +97,9 @@ function FeedPost(props) {
                     <p>{downVoteList.length}</p>
                 </div>
             </div>
-            <div className='main'>
-                <p className='header'>posted by <span className='accountName'>{profile ? 'you' : header}</span> on {date}</p>
-                <p>{body}</p>
+            <div className='postMain'>
+                <p className='postHeader'>posted by <span className='accountName'>{profile ? 'you' : header}</span> on {date}</p>
+                <p className='postBody'>{body}</p>
                 <div className='postFooter'>
                     <Link to={`/post/${_id}`} className='commentButton'><FaRegComment /> <span id='linkDescription'>answers</span></Link>
                     <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>

@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className={token ? 'loggedIn' : 'webPage'}>
-      {token && <Navbar logout={logout} /> }
+      {token && <Navbar logout={logout}/> }
       <div></div>
       <Routes>
         <Route
@@ -26,7 +26,7 @@ function App() {
         <Route path='/feed' element={<ProtectedRoute token={token}/>}>
           <Route 
             path=''
-            element={<Feed />}
+            element={<Feed className='main'/>}
           />
         </Route>
         <Route path='/profile' element={<ProtectedRoute token={token}/>}>

@@ -3,13 +3,13 @@
 .postContainer {
 	display: grid;
 	grid-template-columns: 1fr 15fr;
-	padding: 0.5rem;
+	padding: 1rem;
 	border-top: 0.005rem solid rgb(100, 100, 100);
 }
 
 /* vote container styles */
 .votes {
-	grid-column: 1/1;
+	grid-column: 1 / 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -56,13 +56,13 @@
 }
 
 /* main container styles */
-.main {
+.postMain {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 
-.header {
+.postHeader {
 	font-size: 0.8rem;
 	font-style: italic;
 	color: rgb(197, 197, 197);
@@ -116,4 +116,8 @@
 
 .removeButton:hover {
 	color: red;
+}
+
+.postBody {
+	padding: 0.8rem 0rem;
 }

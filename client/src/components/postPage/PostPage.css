@@ -1,8 +1,9 @@
 /* all styles for post page */
 
 .postPageContainer {
+	grid-area: main;
+	overflow: auto;
 	border-right: 0.005rem rgb(100, 100, 100) solid;
-	height: 100vh;
 }
 
 .postPageHeader {
@@ -13,9 +14,8 @@
 	z-index: 1;
 	padding: 1rem 0rem;
 	display: flex;
-	border-right: 0.005rem rgb(100, 100, 100) solid;
-	border-left: 0.005rem rgb(100, 100, 100) solid;
 	border-bottom: 0.005rem rgb(100, 100, 100) solid;
+	border-left: 0.005rem rgb(100, 100, 100) solid;
 }
 
 .postPageHeader > h2 {

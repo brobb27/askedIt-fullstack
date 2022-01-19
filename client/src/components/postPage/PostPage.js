@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import './PostPage.css'
 import axios from 'axios'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import SinglePost from '../singlePost/SinglePost'
 import CommentForm from '../commentForm/CommentForm'
 import Comment from '../comment/Comment'
@@ -23,6 +23,9 @@ function PostPage() {
 
     // use params to get postId
     const {postId} = useParams()
+
+    // use history to return to previous page
+    const navigate = useNavigate()
 
     // sort comments by upvotes
     function sortByUpVotes(list) {
@@ -96,7 +99,7 @@ function PostPage() {
     return (
         <div className='postPageContainer'>
             <div className='postPageHeader'>
-                <Link to='/feed' className='backButton'><BiArrowBack /></Link>
+                <button type='button' onClick={() => navigate(-1)} className='backButton'><BiArrowBack /></button>
                 <h2>Question</h2>
             </div>
             { isLoading ?

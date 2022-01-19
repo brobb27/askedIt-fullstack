@@ -16,6 +16,24 @@ html {
 /* #1cf819 */
 
 .loggedIn {
+	height: 100vh;
 	display: grid;
+	grid-template-rows: 1fr;
 	grid-template-columns: 2fr 7fr 2fr;
+	grid-template-areas: "header main footer";
+}
+
+::-webkit-scrollbar {
+	width: 0.1rem;
+}
+
+::-webkit-scrollbar-track {
+	background: rgb(100, 100, 100);
+	border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #1cf819;
+	border-radius: 0.5rem;
+	height: 1rem;
 }

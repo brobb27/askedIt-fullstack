@@ -1,6 +1,25 @@
 /* all profile styles */
 
 .profileContainer {
-	height: 100vh;
+	grid-area: main;
+	overflow: auto;
 	border-right: 0.005rem rgb(100, 100, 100) solid;
+}
+
+.profileHeader {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0rem;
+	background-color: #101611;
+	z-index: 1;
+	padding: 1rem 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	border-right: 0.005rem rgb(100, 100, 100) solid;
+	border-left: 0.005rem rgb(100, 100, 100) solid;
+	border-bottom: 0.005rem rgb(100, 100, 100) solid;
+}
+
+.profileTitle {
+	padding: 0.5rem 1.8rem;
 }
