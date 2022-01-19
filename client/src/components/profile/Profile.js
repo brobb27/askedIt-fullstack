@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import './Profile.css'
 import { UserContext } from '../../context/UserProvider'
 import Modal from '../modal/Modal'
 import PostForm from '../postForm/PostForm'
@@ -26,7 +27,7 @@ function Profile() {
     const userPostComponents = userPosts.map(post => <Post {...post} userId={_id} profile={true} key={post._id}/>)
 
     return (
-        <div>
+        <div className='profileContainer'>
             <h1>{username}</h1>
             <h2>Profile</h2>
             <button onClick={toggleModal}>+ Ask Question</button>

@@ -1,5 +1,39 @@
 /* all styles for post page */
 
 .postPageContainer {
-	border-right: 0.005rem rgb(211, 211, 211) solid;
+	border-right: 0.005rem rgb(100, 100, 100) solid;
+	height: 100vh;
+}
+
+.postPageHeader {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0rem;
+	background-color: #101611;
+	z-index: 1;
+	padding: 1rem 0rem;
+	display: flex;
+	border-right: 0.005rem rgb(100, 100, 100) solid;
+	border-left: 0.005rem rgb(100, 100, 100) solid;
+	border-bottom: 0.005rem rgb(100, 100, 100) solid;
+}
+
+.postPageHeader > h2 {
+	padding-left: 1rem;
+}
+
+.backButton {
+	all: unset;
+	cursor: pointer;
+	font-size: 1.2rem;
+	padding: 0.5rem 0.6rem;
+	margin-left: 0.5rem;
+	color: white;
+	background-color: #101611;
+	border-radius: 5rem;
+	transition: 0.5s;
+}
+
+.backButton:hover {
+	background-color: rgba(211, 211, 211, 0.158);
 }

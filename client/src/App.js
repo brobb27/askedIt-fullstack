@@ -8,6 +8,7 @@ import PostPage from './components/postPage/PostPage';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
+import Footer from './components/footer/Footer';
 
 function App() {
   // use UserContext to determine if the user is logged in
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className={token ? 'loggedIn' : 'webPage'}>
       {token && <Navbar logout={logout} /> }
+      <div></div>
       <Routes>
         <Route
           exact path='/'
@@ -40,6 +42,7 @@ function App() {
           />
         </Route>
       </Routes>
+      <Footer />
     </div>
   );
 }

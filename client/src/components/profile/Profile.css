@@ -1,0 +1,6 @@
+/* all profile styles */
+
+.profileContainer {
+	height: 100vh;
+	border-right: 0.005rem rgb(100, 100, 100) solid;
+}

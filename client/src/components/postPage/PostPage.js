@@ -6,6 +6,7 @@ import SinglePost from '../singlePost/SinglePost'
 import CommentForm from '../commentForm/CommentForm'
 import Comment from '../comment/Comment'
 import { UserContext } from '../../context/UserProvider'
+import { BiArrowBack } from 'react-icons/bi'
 
 // create axios interceptor so that the token will be sent with every request
 const userAxios = axios.create()
@@ -50,8 +51,8 @@ function PostPage() {
     function getPost() {
         userAxios.get(`/api/post/onepost/${postId}`)
             .then(res => {
-                console.log(res.data)
                 setPost(res.data)
+                setLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -60,7 +61,6 @@ function PostPage() {
     function getComments() {
         userAxios.get(`/api/comments/post/${postId}`)
             .then(res => {
-                console.log(res)
                 const commentList = res.data
                 sortByUpVotes(commentList)
                 setComments(commentList)
@@ -72,7 +72,6 @@ function PostPage() {
     useEffect(() => {
         getPost()
         getComments()
-        setLoading(false)
         // eslint-disable-next-line
     }, [])
 
@@ -96,8 +95,10 @@ function PostPage() {
 
     return (
         <div className='postPageContainer'>
-            <Link to='/feed'>Back</Link>
-            <h2>Question</h2>
+            <div className='postPageHeader'>
+                <Link to='/feed' className='backButton'><BiArrowBack /></Link>
+                <h2>Question</h2>
+            </div>
             { isLoading ?
             <>
                 <h1>Loading...</h1>

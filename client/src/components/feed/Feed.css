@@ -1,9 +1,54 @@
 /* all feed page styles */
 
 .feedContainer {
-	border-right: 0.005rem rgb(211, 211, 211) solid;
+	height: 100%;
+	border-right: 0.005rem rgb(100, 100, 100) solid;
+	width: inherit;
 }
 
-.feed {
-	margin-top: 1rem;
+.feedContainer > div {
+	width: inherit;
+}
+
+.feedNavbar {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0rem;
+	background-color: #101611;
+	z-index: 1;
+	padding: 1rem 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	border-right: 0.005rem rgb(100, 100, 100) solid;
+	border-left: 0.005rem rgb(100, 100, 100) solid;
+	border-bottom: 0.005rem rgb(100, 100, 100) solid;
+}
+
+.askButton {
+	all: unset;
+	cursor: pointer;
+	font-size: 0.9rem;
+	border: 0.02rem solid #1cf819;
+	padding: 0.2rem 0.5rem;
+	color: #1cf819;
+	border-radius: 0.5rem;
+	transition: 0.5s;
+}
+
+.askButton:hover {
+	background-color: #1cf819;
+	color: #101611;
+}
+
+.sortButton {
+	cursor: pointer;
+	background-color: #101611;
+	color: whitesmoke;
+	border: white 0.02rem solid;
+	border-radius: 0.5rem;
+	font-size: 0.8rem;
+}
+
+.sortButton:focus {
+	outline: none;
 }

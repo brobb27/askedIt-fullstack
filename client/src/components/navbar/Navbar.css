@@ -1,12 +1,15 @@
 /* all navbar styles */
 
 .navContainer {
+	position: fixed;
+	border-right: 0.005rem rgb(100, 100, 100) solid;
+	height: 100vh;
+	width: 17.9%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 	padding-right: 1rem;
 	padding-top: 1rem;
-	border-right: 0.005rem rgb(211, 211, 211) solid;
 }
 
 .link {
@@ -20,5 +23,5 @@
 }
 
 .link:hover {
-	background-color: rgba(211, 211, 211, 0.288);
+	background-color: rgba(211, 211, 211, 0.158);
 }

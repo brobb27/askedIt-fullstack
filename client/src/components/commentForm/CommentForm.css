@@ -1,7 +1,8 @@
 /* all styles for CommentForm  */
 
 .commentForm {
-	outline: 0.005rem rgb(211, 211, 211) solid;
+	border-bottom: 0.005rem rgb(211, 211, 211) solid;
+	border-top: 0.005rem rgb(100, 100, 100) solid;
 }
 
 .commentInput {

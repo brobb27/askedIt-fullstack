@@ -17,7 +17,7 @@ userAxios.interceptors.request.use(config => {
 
 export default function Feed() {
     // user info from context
-    const { user: {username, _id} } = useContext(UserContext)
+    const { user: { _id } } = useContext(UserContext)
 
     // sort feed by upvotes
     function sortByUpVotes(postList) {
@@ -66,17 +66,16 @@ export default function Feed() {
 
     return (
         <div className='feedContainer'>
-            <div>
-                <h1>{username}</h1>
+            <div className='feedNavbar'>
                 <h2>Home</h2>
-                <button onClick={toggleModal}>+ Ask Question</button>
+                <button onClick={toggleModal} className='askButton'>+ Ask Question</button>
                 <Modal open={isOpen} toggle={toggleModal}>
                     <PostForm 
                         toggleModal={toggleModal}
                         getNewPost={getAllPosts}
                     />
                 </Modal>
-                <select>
+                <select className='sortButton'>
                     <option value='recent'>Recent</option>
                     <option value='allTime'>All Time</option>
                 </select>

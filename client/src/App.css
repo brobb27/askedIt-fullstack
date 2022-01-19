@@ -5,15 +5,17 @@
 	font-family: Verdana, sans-serif;
 }
 
-body {
+body,
+html {
 	overflow-x: hidden;
-	background-color: #1f212c;
+	background-color: #101611;
 	color: whitesmoke;
+	height: 100vh;
 }
 
 /* #1cf819 */
 
 .loggedIn {
 	display: grid;
-	grid-template-columns: 2fr 6fr 2fr;
+	grid-template-columns: 2fr 7fr 2fr;
 }
