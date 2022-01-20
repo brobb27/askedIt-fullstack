@@ -17,7 +17,6 @@ function App() {
   return (
     <div className={token ? 'loggedIn' : 'webPage'}>
       {token && <Navbar logout={logout}/> }
-      <div></div>
       <Routes>
         <Route
           exact path='/'
@@ -42,7 +41,7 @@ function App() {
           />
         </Route>
       </Routes>
-      <Footer />
+      {token && <Footer />}
     </div>
   );
 }

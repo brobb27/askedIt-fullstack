@@ -82,7 +82,7 @@ function PostPage() {
     function makeComment(comment) {
         userAxios.post(`/api/comments/makecomment/${postId}`, comment)
         .then(res => {
-            console.log(res.data)
+            console.log('Do something with this response?')
         })
         .catch(err => console.log(err))
     }

@@ -83,7 +83,6 @@ export default function UserProvider({children}) {
     function makePost(newPost) {
         userAxios.post('/api/post', newPost)
             .then(res => {
-                console.log(res)
                 setUserState(prevState => ({
                     ...prevState,
                     userPosts: [...prevState.userPosts, res.data]
