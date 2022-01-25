@@ -11,7 +11,7 @@
 	background-color: #101611;
 	color: white;
 	resize: none;
-	padding: 1rem 4.5rem 0rem 1rem;
+	padding: 1rem 6.5rem 0rem 1rem;
 	border: none;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .commentInput::-webkit-scrollbar {
-	width: 0.5rem;
+	width: 0.3rem;
 }
 .commentInput::-webkit-scrollbar-track {
 	background: #1f212c;

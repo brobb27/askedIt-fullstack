@@ -29,3 +29,5 @@ export default function AuthForm({username, password, hasAccount, setHasAccount,
         </div>
     )
 }
+
+// add a confirm password on create account

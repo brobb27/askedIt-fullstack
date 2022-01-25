@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Comment.css'
 import axios from 'axios'
 import { BsArrowUpCircle, BsArrowDownCircle } from 'react-icons/bs'
 import { MdClose } from 'react-icons/md'
@@ -70,8 +71,8 @@ function Comment(props) {
     const date = new Date(createdAt).toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric'})
 
     return (
-        <div className='postContainer'>
-            <div className='votes'>
+        <div className='commentContainer'>
+            <div className='commentVotes'>
                 <div>
                     <button 
                         className='upVoteButton' 
@@ -93,9 +94,9 @@ function Comment(props) {
                     <p>{downVoteList.length}</p>
                 </div>
             </div>
-            <div className='postMain'>
-                <p className='postHeader'>reply by <span className='accountName'>{header}</span> on {date}</p>
-                <p>{answer}</p>
+            <div className='commentMain'>
+                <p className='commentHeader'>reply by <span className='accountName'>{header}</span> on {date}</p>
+                <p className='commentBody'>{answer}</p>
                 <div className='postFooter'>
                     <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>
                     <p>remove my vote</p>
