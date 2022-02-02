@@ -23,14 +23,10 @@ export default function Feed() {
     function sortByUpVotes(postList) {
         postList.sort((b, a) => a.upVotes.length - b.upVotes.length)
     }
-
-    // sort feed by most recent
-    function toDate(date) {
-        const correctFormat = new Date(date).toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric'}).split('/').reverse().join('')
-        return correctFormat
-    }
+    
+    // sort feed by most recent date
     function sortByDate(postList) {
-        postList.sort((b, a) => toDate(a.createdAt) - toDate(b.createdAt))
+        postList.sort((b, a) => new Date(a.createdAt) - new Date(b.createdAt))
     }
 
     // state handlers for posts in feed
