@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { BsArrowUpCircle, BsArrowDownCircle } from 'react-icons/bs'
 import { FaRegComment } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
+import { AiOutlineDelete } from 'react-icons/ai'
 
 // create axios interceptor so that the token will be sent with every request
 const userAxios = axios.create()
@@ -26,6 +27,7 @@ function FeedPost(props) {
         profile,
         _id, 
         userId,
+        setFeed
     } = props
 
     // state handlers for upVotes
@@ -60,12 +62,21 @@ function FeedPost(props) {
             .catch(err => console.log(err))
     }
 
-    // request to remove vote (set up route on post router) 
+    // request to remove vote
     function handleRemoveVote() {
         userAxios.put(`/api/postVote/remove/${_id}`)
             .then(res => {
                 setUpVote(prevList => prevList.filter(voteId => voteId !== userId))
                 setDownVote(prevList => prevList.filter(voteId => voteId !== userId))
+            })
+            .catch(err => console.log(err))
+    }
+
+    // delete request post
+    function handleDelete() {
+        userAxios.delete(`/api/post/delete/${_id}`)
+            .then(res => {
+                setFeed(prevFeed => prevFeed.filter(post => post._id !== _id))
             })
             .catch(err => console.log(err))
     }
@@ -99,11 +110,11 @@ function FeedPost(props) {
             </div>
             <div className='postMain'>
                 <p className='postHeader'>posted by <span className='accountName'>{profile ? 'you' : header}</span> on {date}</p>
-                <p className='postBody'>{body}</p>
+                <p className='feedPostBody'>{body}</p>
                 <div className='postFooter'>
                     <Link to={`/post/${_id}`} className='commentButton'><FaRegComment /> <span id='linkDescription'>answers</span></Link>
-                    <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>
-                    <p>remove my vote</p>
+                    <button className='removeButton' onClick={handleRemoveVote}><MdClose/><span id='linkDescription'>remove vote</span></button>
+                    {profile && <button className='removeButton' onClick={handleDelete}><AiOutlineDelete/><span id='linkDescription'>delete</span></button>}
                 </div>
             </div>
         </div>

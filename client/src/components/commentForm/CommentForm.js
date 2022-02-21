@@ -29,7 +29,6 @@ function CommentForm({ makeComment, refreshComments }) {
         e.preventDefault()
         makeComment(comment)
         setComment(initComment)
-        refreshComments()
     }
 
     return (

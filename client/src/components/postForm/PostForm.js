@@ -1,10 +1,20 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../../context/UserProvider'
 import './PostForm.css'
+import axios from 'axios'
 
-export default function PostForm({toggleModal, getNewPost}) {
+// create axios interceptor so that the token will be sent with every request
+const userAxios = axios.create()
+
+userAxios.interceptors.request.use(config => {
+    const token = localStorage.getItem('token')
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
+
+function PostForm({toggleModal, setUserFeed}) {
     // user context
-    const { user: {username}, makePost } = useContext(UserContext)
+    const { user: {username}, setUserState } = useContext(UserContext)
 
     // initial post value
     const initPost = {
@@ -24,13 +34,25 @@ export default function PostForm({toggleModal, getNewPost}) {
         }))
     }
 
+    // makePost
+    function makePost(newPost) {
+        userAxios.post('/api/post', newPost)
+            .then(res => {
+                setUserState(prevState => ({
+                    ...prevState,
+                    userPosts: [...prevState.userPosts, res.data]
+                }))
+                setUserFeed(prevFeed => [...prevFeed, res.data])
+            })
+            .catch(err => console.log(err))
+    }
+
     // handle submit post
     function handleSubmit(e) {
         e.preventDefault()
         makePost(postInputs)
         setPostInputs(initPost)
         toggleModal()
-        getNewPost()
     }
 
     return (
@@ -50,3 +72,6 @@ export default function PostForm({toggleModal, getNewPost}) {
         </div>
     )
 }
+
+
+export default PostForm

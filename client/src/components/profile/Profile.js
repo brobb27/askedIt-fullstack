@@ -4,10 +4,52 @@ import { UserContext } from '../../context/UserProvider'
 import Modal from '../modal/Modal'
 import PostForm from '../postForm/PostForm'
 import Post from '../feedPost/FeedPost'
+import axios from 'axios'
+
+// create axios interceptor so that the token will be sent with every request
+const userAxios = axios.create()
+
+userAxios.interceptors.request.use(config => {
+    const token = localStorage.getItem('token')
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
 
 function Profile() {
     // user context information
-    const { user: { _id }, userPosts, getUserPosts } = useContext( UserContext )
+    const { user: { _id }, setUserState } = useContext( UserContext )
+
+    // state handler for modal
+    const [isOpen, setIsOpen] = useState(false)
+    // state handler for profile feed
+    const [profileFeed, setProfileFeed] = useState([])
+
+    // toggle modal
+    function toggleModal() {
+        setIsOpen(prevState => !prevState)
+    }
+
+    // sort feed by most recent date
+    function sortByDate(postList) {
+        postList.sort((b, a) => new Date(a.createdAt) - new Date(b.createdAt))
+    }
+
+    // get user posts
+    function getUserPosts() {
+        userAxios.get('/api/post/myPosts')
+            .then(res => {
+                setUserState(prevState => ({
+                    ...prevState,
+                    userPosts: res.data
+                }))
+                setProfileFeed(() => {
+                    const userPosts = res.data
+                    sortByDate(userPosts)
+                    return userPosts
+                })
+            })
+            .catch(err => console.log(err.response.data.errMsg))
+    }
 
     // gets user posts on page load
     useEffect(() => {
@@ -15,16 +57,8 @@ function Profile() {
         // eslint-disable-next-line
     }, [])
 
-    // state handler for modal
-    const [isOpen, setIsOpen] = useState(false)
-
-    // toggle modal
-    function toggleModal() {
-        setIsOpen(prevState => !prevState)
-    }
-
     // user post components
-    const userPostComponents = userPosts.map(post => <Post {...post} userId={_id} profile={true} key={post._id}/>)
+    const userPostComponents = profileFeed.map(post => <Post {...post} userId={_id} profile={true} key={post._id} setFeed={setProfileFeed}/>)
 
     return (
         <div className='profileContainer'>
@@ -34,7 +68,7 @@ function Profile() {
                 <Modal open={isOpen} toggle={toggleModal}>
                     <PostForm 
                         toggleModal={toggleModal}
-                        getNewPost={getUserPosts}
+                        setUserFeed={setProfileFeed}
                     />
                 </Modal>
             </div>

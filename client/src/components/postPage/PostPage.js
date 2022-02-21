@@ -82,7 +82,7 @@ function PostPage() {
     function makeComment(comment) {
         userAxios.post(`/api/comments/makecomment/${postId}`, comment)
         .then(res => {
-            console.log('Do something with this response?')
+            setComments(prevComments => [...prevComments, res.data])
         })
         .catch(err => console.log(err))
     }
@@ -116,7 +116,6 @@ function PostPage() {
                 <CommentForm 
                     postId={postId}
                     makeComment={makeComment}
-                    refreshComments={getComments}
                 />
                 <div>
                     {comments.length === 0 ?

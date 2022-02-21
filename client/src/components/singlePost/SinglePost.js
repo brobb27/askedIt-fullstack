@@ -102,7 +102,7 @@ function SinglePost(props) {
                 </div>
                 <div>
                     <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>
-                    <p>remove my vote</p>
+                    <p>remove vote</p>
                 </div>
             </div>
         </div>

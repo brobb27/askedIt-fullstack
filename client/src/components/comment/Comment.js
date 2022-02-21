@@ -98,8 +98,7 @@ function Comment(props) {
                 <p className='commentHeader'>reply by <span className='accountName'>{header}</span> on {date}</p>
                 <p className='commentBody'>{answer}</p>
                 <div className='postFooter'>
-                    <button className='removeButton' onClick={handleRemoveVote}><MdClose/></button>
-                    <p>remove my vote</p>
+                    <button className='removeButton' onClick={handleRemoveVote}><MdClose/><span id='linkDescription'>remove vote</span></button>
                 </div>
             </div>
         </div>

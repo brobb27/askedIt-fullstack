@@ -40,11 +40,11 @@ export default function Feed() {
     function handleFilter(e) {
         setIsSorting(true)
         const { value } = e.target
-        if (value === 'recent') {
+        if (value === 'votes') {
             userAxios.get('/api/post/all')
                 .then(res => {
                     const postList = res.data
-                    sortByDate(postList)
+                    sortByUpVotes(postList)
                     setFeed(postList)
                 })
                 .catch(err => console.log(err))
@@ -64,7 +64,7 @@ export default function Feed() {
         userAxios.get(`/api/post/all`)
             .then(res => {
                 const postList = res.data
-                sortByUpVotes(postList)
+                sortByDate(postList)
                 setFeed(postList)
             })
             .catch(err => console.log(err))
@@ -73,7 +73,7 @@ export default function Feed() {
     useEffect(() => {
         getAllPosts()
         // eslint-disable-next-line
-    }, [])
+    }, [isOpen])
 
     // post components
     const postComponents = feed.map(post => 
@@ -93,12 +93,12 @@ export default function Feed() {
                 <Modal open={isOpen} toggle={toggleModal}>
                     <PostForm 
                         toggleModal={toggleModal}
-                        getNewPost={getAllPosts}
+                        setUserFeed={setFeed}
                     />
                 </Modal>
                 <select className='sortButton' onChange={handleFilter}>
-                    <option value='votes'>Up Votes</option>
                     <option value='recent'>Recent</option>
+                    <option value='votes'>Up Votes</option>
                 </select>
             </div>
             {isSorting ? 

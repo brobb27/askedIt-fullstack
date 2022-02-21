@@ -79,18 +79,6 @@ export default function UserProvider({children}) {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
-    // make a post
-    function makePost(newPost) {
-        userAxios.post('/api/post', newPost)
-            .then(res => {
-                setUserState(prevState => ({
-                    ...prevState,
-                    userPosts: [...prevState.userPosts, res.data]
-                }))
-            })
-            .catch(err => console.log(err.response.data.errMsg))
-    }
-
     // handle any auth error
     function handleAuthError(errMsg) {
         setUserState(prevState => ({
@@ -113,11 +101,25 @@ export default function UserProvider({children}) {
             createAccount, 
             login, 
             logout,
-            makePost,
-            getUserPosts,
-            resetAuthError
+            resetAuthError,
+            setUserState
         }}>
             { children }
         </UserContext.Provider>
     )
 }
+
+
+// This was moved to the post form container
+
+    // make a post
+    // function makePost(newPost) {
+    //     userAxios.post('/api/post', newPost)
+    //         .then(res => {
+    //             setUserState(prevState => ({
+    //                 ...prevState,
+    //                 userPosts: [...prevState.userPosts, res.data]
+    //             }))
+    //         })
+    //         .catch(err => console.log(err.response.data.errMsg))
+    // }

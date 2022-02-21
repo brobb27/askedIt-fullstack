@@ -89,8 +89,6 @@
 }
 
 #linkDescription {
-	position: relative;
-	bottom: 0.25rem;
 	font-size: 0.8rem;
 }
 
@@ -118,6 +116,7 @@
 	color: red;
 }
 
-.postBody {
+.feedPostBody {
 	padding: 0.8rem 0rem;
+	font-size: 1rem;
 }
