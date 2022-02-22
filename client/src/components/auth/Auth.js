@@ -42,6 +42,12 @@ export default function Auth() {
         login(userInput)
     }
 
+    // handle guest log in
+    function skipSignIn(e) {
+        e.preventDefault()
+        login({username: 'guest', password: 'guest'})
+    }
+
     // toggle has account
     function toggle() {
         setHasAccount(prevState => !prevState)
@@ -90,6 +96,7 @@ export default function Auth() {
                     hasAccount={hasAccount}
                     setHasAccount={toggle}
                     err={errMsg}
+                    handleSkipSignIn={skipSignIn}
                 />
             </>}
         </div>
