@@ -54,3 +54,11 @@
 .sortButton:focus {
 	outline: none;
 }
+
+/* media query styles */
+
+@media only screen and (max-width: 500px) {
+	.feedNavbar {
+		padding: 1rem 0.5rem;
+	}
+}

@@ -14,3 +14,14 @@
 	margin-bottom: 0.5rem;
 	color: whitesmoke;
 }
+
+/* media query styles */
+
+@media only screen and (max-width: 500px) {
+	.footerContainer {
+		position: absolute;
+		height: auto;
+		bottom: 0;
+		left: 0;
+	}
+}

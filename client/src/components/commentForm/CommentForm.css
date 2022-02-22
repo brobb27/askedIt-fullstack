@@ -11,7 +11,7 @@
 	background-color: #101611;
 	color: white;
 	resize: none;
-	padding: 1rem 6.5rem 0rem 1rem;
+	padding: 1rem 6.5rem 1rem 1rem;
 	border: none;
 }
 
@@ -37,8 +37,9 @@
 	all: unset;
 	cursor: pointer;
 	position: relative;
-	bottom: 2rem;
-	left: 82%;
+	bottom: 3.5rem;
+	right: 0.8rem;
+	float: right;
 	font-size: 0.9rem;
 	background-color: #101611;
 	border: 0.02rem solid #1cf819;
@@ -46,6 +47,7 @@
 	color: #1cf819;
 	border-radius: 0.5rem;
 	transition: 0.5s ease-in-out;
+	margin-bottom: -2rem;
 }
 
 .answerButton:hover {

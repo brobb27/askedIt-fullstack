@@ -24,6 +24,7 @@ html {
 }
 
 ::-webkit-scrollbar {
+	height: 0.2rem;
 	width: 0.1rem;
 }
 
@@ -36,4 +37,13 @@ html {
 	background: #1cf819;
 	border-radius: 0.5rem;
 	height: 1rem;
+}
+
+/* media query styles */
+
+@media only screen and (max-width: 500px) {
+	.loggedIn {
+		grid-template-columns: 2fr 7fr;
+		grid-template-areas: "header main";
+	}
 }

@@ -10,6 +10,8 @@ export default function Auth() {
     // state handler for authform and create account/login
     const [userInput, setUserInput] = useState(initUser)
     const [hasAccount, setHasAccount] =  useState(true)
+    const [confirmPass, setConfirmPass] = useState('')
+    const [passwordsMatch, setPasswordsMatch] = useState(true)
 
     // needed values from context
     const { createAccount, login, errMsg, resetAuthError } = useContext(UserContext)
@@ -22,11 +24,16 @@ export default function Auth() {
             [name]: value
         }))
     }
+    // handle change for confirm password
+    function handleConfirmChange(e) {
+        const { value } = e.target
+        setConfirmPass(value)
+    }
 
     // create account funciton
     function handleCreateAccount(e) {
         e.preventDefault()
-        createAccount(userInput)
+        userInput.password === confirmPass ? createAccount(userInput) : setPasswordsMatch(false)
     }
 
     // log in function
@@ -64,6 +71,9 @@ export default function Auth() {
                     username={userInput.username}
                     password={userInput.password}
                     handleChange={handleChange}
+                    handleConfirm={handleConfirmChange}
+                    confirmPass={confirmPass}
+                    passwordsMatch={passwordsMatch}
                     handleSubmit={handleCreateAccount}
                     hasAccount={hasAccount}
                     setHasAccount={toggle}

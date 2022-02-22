@@ -2,14 +2,14 @@
 
 .commentContainer {
 	display: grid;
-	grid-template-columns: 1fr 15fr;
+	grid-template-columns: auto 1fr;
 	padding: 1rem;
 	border-top: 0.005rem solid rgb(100, 100, 100);
 }
 
 /* vote container styles */
 .commentVotes {
-	grid-column: 1 / 1;
+	grid-column: 0 / 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
