@@ -25,7 +25,7 @@ export default function UserProvider({children}) {
 
     // create account
     function createAccount(credentials) {
-        axios.post('/auth/createAccount', credentials)
+        axios.post(`${process.env.REACT_APP_ASKEDIT_API}/auth/createAccount`, credentials)
             .then(res => {
                 const {user, token} = res.data
                 localStorage.setItem('token', token)
@@ -41,7 +41,7 @@ export default function UserProvider({children}) {
 
     // log in
     function login(credentials) {
-        axios.post('/auth/login', credentials)
+        axios.post(`${process.env.REACT_APP_ASKEDIT_API}/auth/login`, credentials)
         .then(res => {
             const {user, token} = res.data
             localStorage.setItem('token', token)
@@ -69,7 +69,7 @@ export default function UserProvider({children}) {
 
     // get user posts
     function getUserPosts() {
-        userAxios.get('/api/post/myPosts')
+        userAxios.get(`${process.env.REACT_APP_ASKEDIT_API}/api/post/myPosts`)
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,

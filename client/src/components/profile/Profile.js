@@ -36,7 +36,7 @@ function Profile() {
 
     // get user posts
     function getUserPosts() {
-        userAxios.get('/api/post/myPosts')
+        userAxios.get(`${process.env.REACT_APP_ASKEDIT_API}/api/post/myPosts`)
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,

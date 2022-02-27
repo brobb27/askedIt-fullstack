@@ -40,7 +40,7 @@ function SinglePost(props) {
 
     // put request for upVotes
     function handleUpVote() {
-        userAxios.put(`/api/postVote/up/${_id}`)
+        userAxios.put(`${process.env.REACT_APP_ASKEDIT_API}/api/postVote/up/${_id}`)
             .then(res => {
                 setUpVote(prevList => prevList.includes(userId) ? prevList : [...prevList, userId])
                 setDownVote(prevList => prevList.filter(voteId => voteId !== userId))
@@ -50,7 +50,7 @@ function SinglePost(props) {
 
     // put request for downVotes
     function handleDownVote() {
-        userAxios.put(`/api/postVote/down/${_id}`)
+        userAxios.put(`${process.env.REACT_APP_ASKEDIT_API}/api/postVote/down/${_id}`)
             .then(res => {
                 setDownVote(prevList => prevList.includes(userId) ? prevList : [...prevList, userId])
                 setUpVote(prevList => prevList.filter(voteId => voteId !== userId))
@@ -60,7 +60,7 @@ function SinglePost(props) {
 
     // request to remove vote (set up route on post router) 
     function handleRemoveVote() {
-        userAxios.put(`/api/postVote/remove/${_id}`)
+        userAxios.put(`${process.env.REACT_APP_ASKEDIT_API}/api/postVote/remove/${_id}`)
             .then(res => {
                 setUpVote(prevList => prevList.filter(voteId => voteId !== userId))
                 setDownVote(prevList => prevList.filter(voteId => voteId !== userId))

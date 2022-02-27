@@ -41,7 +41,7 @@ export default function Feed() {
         setIsSorting(true)
         const { value } = e.target
         if (value === 'votes') {
-            userAxios.get('/api/post/all')
+            userAxios.get(`${process.env.REACT_APP_ASKEDIT_API}/api/post/all`)
                 .then(res => {
                     const postList = res.data
                     sortByUpVotes(postList)
@@ -61,7 +61,7 @@ export default function Feed() {
     
     // get all posts
     function getAllPosts() {
-        userAxios.get(`/api/post/all`)
+        userAxios.get(`${process.env.REACT_APP_ASKEDIT_API}/api/post/all`)
             .then(res => {
                 const postList = res.data
                 sortByDate(postList)

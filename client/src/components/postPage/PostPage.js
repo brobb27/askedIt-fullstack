@@ -52,7 +52,7 @@ function PostPage() {
 
     // get post request
     function getPost() {
-        userAxios.get(`/api/post/onepost/${postId}`)
+        userAxios.get(`${process.env.REACT_APP_ASKEDIT_API}/api/post/onepost/${postId}`)
             .then(res => {
                 setPost(res.data)
                 setLoading(false)
@@ -62,7 +62,7 @@ function PostPage() {
 
     // get comments related to post
     function getComments() {
-        userAxios.get(`/api/comments/post/${postId}`)
+        userAxios.get(`${process.env.REACT_APP_ASKEDIT_API}/api/comments/post/${postId}`)
             .then(res => {
                 const commentList = res.data
                 sortByUpVotes(commentList)
@@ -80,7 +80,7 @@ function PostPage() {
 
     // make comment function
     function makeComment(comment) {
-        userAxios.post(`/api/comments/makecomment/${postId}`, comment)
+        userAxios.post(`${process.env.REACT_APP_ASKEDIT_API}/api/comments/makecomment/${postId}`, comment)
         .then(res => {
             setComments(prevComments => [...prevComments, res.data])
         })

@@ -38,5 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://askedit-server-5wsylnko3q-wm.a.run.app"
+  "proxy": "http://localhost:7000"
 }

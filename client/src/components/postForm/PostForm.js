@@ -36,7 +36,7 @@ function PostForm({toggleModal, setUserFeed}) {
 
     // makePost
     function makePost(newPost) {
-        userAxios.post('/api/post', newPost)
+        userAxios.post(`${process.env.REACT_APP_ASKEDIT_API}/api/post`, newPost)
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
