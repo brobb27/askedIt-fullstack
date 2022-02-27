@@ -7,25 +7,22 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
 
-// port
-const PORT = process.env.PORT || 7000
-
 // mongoDB atlas (when it gets set up for deployment)
-// MONGODB_URI = (Enter mongo URI)
+// MONGODB_URI = `mongodb+srv://brobb27:RickNMorty13@asked-it-db.zdvim.mongodb.net/asked-it?retryWrites=true&w=majority`
 
 // middleware
 app.use(express.json()) // allows express to take json in the req.body
 app.use(morgan('dev')) // nice logs to the console for server activity
 
 // connect to db using mongoose
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/askedIt-db`,
+mongoose.connect(`mongodb+srv://brobb27:RickNMorty13@asked-it-db.zdvim.mongodb.net/asked-it?retryWrites=true&w=majority` || `mongodb://localhost:27017/askedIt-db`,
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
 },
-() => console.log('Connected to the Marketplace DB')
+() => console.log('Connected to the Asked It DB')
 )
 
 // allows requests from the front end (setting proxy does this as well)
@@ -52,6 +49,9 @@ app.use((err, req, res, next) => {
     }
     return res.send({errMsg: err.message})
 })
+
+// port
+const PORT = parseInt(process.env.PORT) || 7000
 
 // server listening
 app.listen(PORT, () => {
