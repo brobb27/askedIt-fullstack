@@ -8,7 +8,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 // mongoDB atlas (when it gets set up for deployment)
-// MONGODB_URI = `mongodb+srv://brobb27:RickNMorty13@asked-it-db.zdvim.mongodb.net/asked-it?retryWrites=true&w=majority`
+// MONGODB_URI = enter in .env file
 
 // middleware
 app.use(express.json()) // allows express to take json in the req.body
