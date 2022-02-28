@@ -35,8 +35,8 @@ export default function AuthForm({username, password, confirmPass, passwordsMatc
                 {!hasAccount && !passwordsMatch ? <p className='errMsg'>The passwords do not match.</p> : <></>}
                 <button>{hasAccount ? 'Sign In' : 'Create Account'}</button>
             </form>
-            <p>{hasAccount ? `Dont have an account?` : `Already have an account?`}</p>
-            <p onClick={setHasAccount} className='toggleSignIn'>{hasAccount ? `Create account` : `Sign in`}</p>
+            <p>{hasAccount ? `Dont have an Account?` : `Already have an Account?`}</p>
+            <p onClick={setHasAccount} className='toggleSignIn'>{hasAccount ? `Create Account` : `Sign in`}</p>
             {hasAccount && 
             <>
             <p>Just Visiting?</p>

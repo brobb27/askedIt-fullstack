@@ -11,7 +11,7 @@
 	border-radius: 0.5rem;
 	background-color: #101611;
 	color: white;
-	outline: rgb(150, 150, 150) 0.15rem solid;
+	border: rgb(150, 150, 150) 0.15rem solid;
 }
 
 .overlay {
