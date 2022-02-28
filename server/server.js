@@ -15,7 +15,7 @@ app.use(express.json()) // allows express to take json in the req.body
 app.use(morgan('dev')) // nice logs to the console for server activity
 
 // connect to db using mongoose
-mongoose.connect(`mongodb+srv://brobb27:RickNMorty13@asked-it-db.zdvim.mongodb.net/asked-it?retryWrites=true&w=majority` || `mongodb://localhost:27017/askedIt-db`,
+mongoose.connect(process.env.MONGO_URI || `mongodb://localhost:27017/askedIt-db`,
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,
