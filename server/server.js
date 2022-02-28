@@ -25,11 +25,8 @@ mongoose.connect(`mongodb+srv://brobb27:RickNMorty13@asked-it-db.zdvim.mongodb.n
 () => console.log('Connected to the Asked It DB')
 )
 
-// allows requests from the front end (setting proxy does this as well)
-app.use(cors({
-    origin: 'http://localhost:3000',
-    origin: 'http://localhost:7000'
-}))
+// allows requests from the front end
+app.use(cors())
 
 // routes
 app.use('/auth', require('./routes/authRouter'))
