@@ -2,7 +2,7 @@
 
 .modalContainer {
 	position: fixed;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	padding: 1rem 1.2rem 1rem 1rem;
